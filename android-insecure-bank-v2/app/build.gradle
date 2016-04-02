@@ -35,6 +35,29 @@ dependencies {
     findbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.4.4'
 }
 
+
+task findbugs(type: FindBugs) {
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "high"
+    classes = files("${project.buildDir}/findbugs")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = true
+        xml {
+            destination "$project.buildDir/reports/findbugs/findbugs.xml"
+            xml.withMessages true
+        }
+    }
+    classpath = files()
+}
+
+
+
+
 //FindBugs task that load security rules only
 task findSecurityBugs(type: FindBugs) {
 
@@ -45,7 +68,8 @@ task findSecurityBugs(type: FindBugs) {
 
     findbugs {
         toolVersion = "3.0.1"
-        sourceSets = [android.sourceSets]
+        //sourceSets = [android.sourceSets]
+        source fileTree(project.rootDir.absolutePath).include("**/*.java");
         ignoreFailures = true
         reportsDir = file("$project.buildDir/findbugsReports")
         effort = "max"
