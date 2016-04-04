@@ -68,8 +68,8 @@ task findSecurityBugs(type: FindBugs) {
 
     findbugs {
         toolVersion = "3.0.1"
-        //sourceSets = [android.sourceSets]
-        source fileTree(project.rootDir.absolutePath).include("**/*.java");
+        sourceSets = [android.sourceSets]
+        //source fileTree(project.rootDir.absolutePath).include("**/*.java");
         ignoreFailures = true
         reportsDir = file("$project.buildDir/findbugsReports")
         effort = "max"
