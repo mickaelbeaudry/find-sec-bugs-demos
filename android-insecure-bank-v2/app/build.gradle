@@ -32,7 +32,7 @@ dependencies {
     //Dependencies for FindBugs and FindBugs plugins
     findbugs 'com.google.code.findbugs:findbugs:3.0.1'
     findbugs configurations.findbugsPlugins.dependencies
-    findbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.4.4'
+    //findbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.4.4'
 }
 
 
@@ -56,46 +56,46 @@ dependencies {
 //}
 
 
-//task findbugs(type: FindBugs) {
-//    ignoreFailures = false
-//    effort = "default"
-//    reportLevel = "medium"
-//    excludeFilter = new File("${project.rootDir}/findbugs-filter.xml")
-//    classes = files("${project.rootDir}/app/build/intermediates/classes")
-//    source = fileTree('src/main/java/')
-//    classpath = files()
-//    ignoreFailures = true
-//    reports {
-//        xml.enabled = true
-//        html.enabled = false
-//        xml {
-//            destination "$project.buildDir/findbugs/findbugs-output.xml"
-//        }
-//        html {
-//            destination "$project.buildDir/findbugs/findbugs-output.html"
-//        }
-//    }
-//}
-
-
-
-//FindBugs task that load security rules only
-task findSecurityBugs(type: FindBugs) {
-
+task findbugs(type: FindBugs) {
+    ignoreFailures = false
+    effort = "default"
+    reportLevel = "medium"
+    excludeFilter = new File("${project.rootDir}/findbugs-filter.xml")
     classes = files("${project.rootDir}/app/build/intermediates/classes")
     source = fileTree('src/main/java/')
     classpath = files()
-    pluginClasspath = project.configurations.findbugsPlugins
-
-    findbugs {
-        toolVersion = "3.0.1"
-        //sourceSets = [android.sourceSets]
-        //source fileTree(project.rootDir.absolutePath).include("**/*.java");
-        ignoreFailures = true
-        reportsDir = file("$project.buildDir/findbugsReports")
-        effort = "max"
-        reportLevel = "low"
-        includeFilter = file("$rootProject.projectDir/fsb-include.xml")
-        excludeFilter = file("$rootProject.projectDir/fsb-exclude.xml")
+    ignoreFailures = true
+    reports {
+        xml.enabled = true
+        html.enabled = false
+        xml {
+            destination "$project.buildDir/findbugs/findbugs-output.xml"
+        }
+        html {
+            destination "$project.buildDir/findbugs/findbugs-output.html"
+        }
     }
 }
+
+
+
+////FindBugs task that load security rules only
+//task findSecurityBugs(type: FindBugs) {
+//
+//    classes = files("${project.rootDir}/app/build/intermediates/classes")
+//    source = fileTree('src/main/java/')
+//    classpath = files()
+//    pluginClasspath = project.configurations.findbugsPlugins
+//
+//    findbugs {
+//        toolVersion = "3.0.1"
+//        //sourceSets = [android.sourceSets]
+//        //source fileTree(project.rootDir.absolutePath).include("**/*.java");
+//        ignoreFailures = true
+//        reportsDir = file("$project.buildDir/findbugsReports")
+//        effort = "max"
+//        reportLevel = "low"
+//        includeFilter = file("$rootProject.projectDir/fsb-include.xml")
+//        excludeFilter = file("$rootProject.projectDir/fsb-exclude.xml")
+//    }
+//}
