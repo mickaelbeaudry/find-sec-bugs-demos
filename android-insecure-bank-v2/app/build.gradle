@@ -64,6 +64,7 @@ task findbugs(type: FindBugs) {
     classes = files("${project.rootDir}/app/build/intermediates/classes")
     source = fileTree('src/main/java/')
     classpath = files()
+    ignoreFailures = true
     reports {
         xml.enabled = true
         html.enabled = false
