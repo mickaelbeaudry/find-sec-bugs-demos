@@ -56,26 +56,26 @@ dependencies {
 //}
 
 
-task findbugs(type: FindBugs) {
-    ignoreFailures = false
-    effort = "default"
-    reportLevel = "medium"
-    excludeFilter = new File("${project.rootDir}/findbugs-filter.xml")
-    classes = files("${project.rootDir}/app/build/intermediates/classes")
-    source = fileTree('src/main/java/')
-    classpath = files()
-    ignoreFailures = true
-    reports {
-        xml.enabled = true
-        html.enabled = false
-        xml {
-            destination "$project.buildDir/findbugs/findbugs-output.xml"
-        }
-        html {
-            destination "$project.buildDir/findbugs/findbugs-output.html"
-        }
-    }
-}
+//task findbugs(type: FindBugs) {
+//    ignoreFailures = false
+//    effort = "default"
+//    reportLevel = "medium"
+//    excludeFilter = new File("${project.rootDir}/findbugs-filter.xml")
+//    classes = files("${project.rootDir}/app/build/intermediates/classes")
+//    source = fileTree('src/main/java/')
+//    classpath = files()
+//    ignoreFailures = true
+//    reports {
+//        xml.enabled = true
+//        html.enabled = false
+//        xml {
+//            destination "$project.buildDir/findbugs/findbugs-output.xml"
+//        }
+//        html {
+//            destination "$project.buildDir/findbugs/findbugs-output.html"
+//        }
+//    }
+//}
 
 
 
